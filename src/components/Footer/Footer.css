@@ -1,0 +1,40 @@
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  position: relative; /* Change this line */
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Add this line */
+}
+
+.footer a {
+  color: #ffffff;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #ffcc00;
+}
+
+.footer .social-icons {
+  margin-bottom: 1rem;
+}
+
+.footer .social-icons a {
+  font-size: 2rem;
+}
+.footerMod {
+  background-color: rgb(31, 34, 31);
+  min-height: 250px;
+  color: #ffffff;
+  font-style: italic;
+  padding: 10px;
+  margin-top: 400px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  flex-shrink: 0; /* Ensure it doesn't shrink */
+}
