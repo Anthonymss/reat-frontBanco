@@ -32,7 +32,7 @@ const Transactions: React.FC = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get(`/banco1/transacciones/datos/${activeUser.numeroCuenta}`);
+      const response = await axios.get(`https://banco1-bcp.onrender.com/transacciones/datos/${activeUser.numeroCuenta}`);
       setTransactions(response.data);
     } catch (error) {
       console.error('Error al obtener transacciones:', error);
@@ -45,14 +45,14 @@ const Transactions: React.FC = () => {
       let response;
 
       if (transactionType === 'TRANSFERENCIA') {
-        response = await axios.post('/banco1/transacciones/operacion', {
+        response = await axios.post('https://banco1-bcp.onrender.com/transacciones/operacion', {
           tipo: transactionType,
           monto: parseFloat(amount.toFixed(2)),
           cuentaOrigenNumero: activeUser.numeroCuenta || '',
           cuentaDestinoNumero: accountNumber
         });
       } else if (transactionType === 'DEPOSITO' || transactionType === 'RETIRO') {
-        response = await axios.post('/banco1/transacciones/operacion', {
+        response = await axios.post('https://banco1-bcp.onrender.com/transacciones/operacion', {
           tipo: transactionType,
           monto: parseFloat(amount.toFixed(2)),
           cuentaOrigenNumero: activeUser.numeroCuenta || '',
