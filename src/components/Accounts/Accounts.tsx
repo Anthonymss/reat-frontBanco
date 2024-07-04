@@ -16,7 +16,7 @@ const Accounts: React.FC = () => {
   useEffect(() => {
     const fetchAccount = async () => {
       try {
-        const response = await fetch(`/banco1/cuentas/${numeroCuentaUsuario}`);
+        const response = await fetch(`https://banco1-bcp.onrender.com/cuentas/${numeroCuentaUsuario}`);
         if (!response.ok) {
           throw new Error('Error fetching account');
         }
@@ -47,7 +47,7 @@ const Accounts: React.FC = () => {
 
   const handleCreateAccount = async () => {
     try {
-      const response = await fetch('/banco1/Register/crearCuenta', {
+      const response = await fetch('https://banco1-bcp.onrender.com/Register/crearCuenta', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -66,7 +66,7 @@ const Create: React.FC = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch('/banco1/Register/firstRegister', {
+      const response = await fetch('https://banco1-bcp.onrender.comRegister/firstRegister', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -37,7 +37,7 @@ const Transaction: React.FC = () => {
 
   const fetchBanks = async () => {
     try {
-      const response = await fetch('/banco1/microservicios');
+      const response = await fetch('https://banco1-bcp.onrender.com/microservicios');
       if (!response.ok) {
         throw new Error('Failed to fetch banks');
       }
@@ -56,7 +56,7 @@ const Transaction: React.FC = () => {
 
   const handleTransaction = async () => {
     try {
-      const response = await fetch(`/banco1/transacciones/operacionInterbancaria/${destinationBank}`, {
+      const response = await fetch(`https://banco1-bcp.onrender.com/transacciones/operacionInterbancaria/${destinationBank}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
