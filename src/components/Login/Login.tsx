@@ -93,9 +93,7 @@ const Login: React.FC = () => {
   };
 
 
-  const handleForgotPassword = () => {
-    alert('Se enviará un correo electrónico para recuperar la contraseña.');
-  };
+
 
   const handleCloseError = () => {
     setOpenError(false);

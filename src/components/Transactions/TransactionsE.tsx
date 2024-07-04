@@ -21,11 +21,11 @@ const StyledFormContainer = styled.div`
 `;
 
 const Transaction: React.FC = () => {
-    const [transactionType, setTransactionType] = useState('TRANSACCION_INTERBANCARIA');
+    const [transactionType] = useState('TRANSACCION_INTERBANCARIA'); // No cambia, así que no necesita estar en estado
     const [amount, setAmount] = useState(0.00);
     const [destinationAccountNumber, setDestinationAccountNumber] = useState('');
-    const [originBank, setOriginBank] = useState('');
-    const [destinationBank, setDestinationBank] = useState('');
+    const [originBank, setOriginBank] = useState<string>('');
+    const [destinationBank, setDestinationBank] = useState<string>('');
     const [error, setError] = useState('');
     const [openError, setOpenError] = useState(false);
     const [banks, setBanks] = useState<string[]>([]);
@@ -76,11 +76,7 @@ const Transaction: React.FC = () => {
                 throw new Error('Transacción fallida');
             }
 
-            // await response.json();
-            console.log('Transacción exitosa:');
-
             setNotification({ message: 'Transacción exitosa!', severity: 'success' });
-            setError('');
             setOpenError(true); // Mostrar éxito o manejar redirección según necesidad
         } catch (error) {
             console.error('Error:', error);
@@ -109,7 +105,7 @@ const Transaction: React.FC = () => {
                     margin="normal"
                     type="number"
                     value={amount}
-                    onChange={(e) => setAmount(Number(e.target.value))}
+                    onChange={(e) => setAmount(parseFloat(e.target.value))}
                 />
                 <TextField
                     label="Número de Cuenta Destino"

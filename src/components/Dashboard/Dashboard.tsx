@@ -3,7 +3,6 @@ import { Container, Typography, Box, Card, CardContent, Grid } from '@mui/materi
 
 const Dashboard: React.FC = () => {
   // Obtener el usuario activo desde localStorage
-  const activeUser = localStorage.getItem('activeUser');
 
   return (
     <Container>

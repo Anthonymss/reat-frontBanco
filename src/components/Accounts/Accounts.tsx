@@ -11,7 +11,6 @@ const Accounts: React.FC = () => {
   const [error, setError] = useState('');
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
-  const [notification, setNotification] = useState<{ message: string; severity: 'success' | 'error' | 'info' } | null>(null);
   const activeUser = JSON.parse(localStorage.getItem('activeUser') || '{}');
   const numeroCuentaUsuario = activeUser.numeroCuenta;
 
@@ -64,8 +63,6 @@ const Accounts: React.FC = () => {
       });
 
     
-      setNotification({ message: 'Cuenta creada correctamente', severity: 'success' });
-
       const data = await response.json();
       console.log('Account created:', data);
       setOpenSuccess(true);

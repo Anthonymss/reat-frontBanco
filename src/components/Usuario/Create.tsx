@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Typography, Box, Snackbar, Grid } from '@mui/material';
-import { Person, Email, VpnKey, AccountBox, Phone, Fingerprint } from '@mui/icons-material';
+import { Container, TextField, Button, Typography, Snackbar, Grid } from '@mui/material';
+import { Person, Email, VpnKey, Fingerprint, Phone } from '@mui/icons-material';
 import styled from '@emotion/styled';
-import './Create.css';
+import './Create.css'; // Asegúrate de que este archivo CSS está presente y definido correctamente
 
 const StyledContainer = styled(Container)`
   display: flex;
@@ -37,32 +37,26 @@ const Create: React.FC = () => {
   const validateForm = () => {
     if (nombre.length > 50) {
       setError('El nombre no puede tener más de 50 caracteres.');
-      setOpenError(true);
       return false;
     }
     if (apellido.length > 50) {
       setError('El apellido no puede tener más de 50 caracteres.');
-      setOpenError(true);
       return false;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 50) {
       setError('Por favor, ingresa un correo electrónico válido con un máximo de 50 caracteres.');
-      setOpenError(true);
       return false;
     }
     if (!/^\d{8}$/.test(dni)) {
       setError('El DNI debe ser un número de 8 dígitos.');
-      setOpenError(true);
       return false;
     }
     if (telefono.length > 50) {
       setError('El teléfono no puede tener más de 50 caracteres.');
-      setOpenError(true);
       return false;
     }
     if (password.length === 0) {
       setError('La contraseña no puede estar vacía.');
-      setOpenError(true);
       return false;
     }
     return true;
@@ -94,8 +88,7 @@ const Create: React.FC = () => {
 
       const data = await response.text();
       console.log('Registro exitoso:', data);
-      navigate('/login');
-     
+      navigate('/login'); // Redirige al usuario a la página de inicio de sesión después del registro exitoso
 
     } catch (error) {
       console.error('Error:', error);
@@ -127,6 +120,7 @@ const Create: React.FC = () => {
                   <Person color="action" />
                 ),
               }}
+              helperText={error && error.includes('nombre') && error}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -141,6 +135,7 @@ const Create: React.FC = () => {
                   <Person color="action" />
                 ),
               }}
+              helperText={error && error.includes('apellido') && error}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -155,6 +150,7 @@ const Create: React.FC = () => {
                   <Email color="action" />
                 ),
               }}
+              helperText={error && error.includes('correo electrónico') && error}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -169,6 +165,7 @@ const Create: React.FC = () => {
                   <Fingerprint color="action" />
                 ),
               }}
+              helperText={error && error.includes('DNI') && error}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -183,6 +180,7 @@ const Create: React.FC = () => {
                   <Phone color="action" />
                 ),
               }}
+              helperText={error && error.includes('teléfono') && error}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -198,6 +196,7 @@ const Create: React.FC = () => {
                   <VpnKey color="action" />
                 ),
               }}
+              helperText={error && error.includes('contraseña') && error}
             />
           </Grid>
         </Grid>

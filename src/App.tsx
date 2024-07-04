@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 import Navbar from "./components/Navbar/Navbar"; 
@@ -13,7 +12,6 @@ import Accounts from "./components/Accounts/Accounts";
 import Profile from "./components/Profile/Profile";
 import Create from "./components/Usuario/Create";
 
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import "./App.css";
 
 function App() {
