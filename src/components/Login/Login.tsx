@@ -54,7 +54,7 @@ const Login: React.FC = () => {
         };
       }
 
-      const response = await fetch('https://example.com/banco1/Login', { // Asegúrate de usar una URL válida
+      const response = await fetch('/banco1/Login', { // Asegúrate de usar una URL válida
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
