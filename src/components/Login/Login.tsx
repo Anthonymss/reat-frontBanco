@@ -4,7 +4,7 @@ import { Container, TextField, Button, Typography, Box, Snackbar } from '@mui/ma
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import styled from '@emotion/styled';
-import './Login.css'; // Importa tu archivo CSS
+import './Login.css'; // Asegúrate de importar tu archivo CSS
 import { Link } from 'react-router-dom';
 
 const StyledContainer = styled(Container)`
@@ -41,20 +41,20 @@ const Login: React.FC = () => {
     try {
       let requestBody = {};
       if (username.length === 8 && /^\d+$/.test(username)) {
-        // If username is 8 digits and only numbers, treat it as DNI
+        // Si username tiene 8 dígitos y son solo números, trátalo como DNI
         requestBody = {
           dni: username,
           password: password,
         };
       } else {
-        // Otherwise, treat it as numeroCuenta
+        // De lo contrario, trátalo como numeroCuenta
         requestBody = {
           numeroCuenta: username,
           password: password,
         };
       }
 
-      const response = await fetch('banco1/Login', {
+      const response = await fetch('https://example.com/banco1/Login', { // Asegúrate de usar una URL válida
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,25 +63,24 @@ const Login: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Login failed');
+        throw new Error('Login fallido');
       }
 
-      const data = await response.json(); // Assume backend returns JSON with user information
-      console.log('Login successful:', data);
+      const data = await response.json(); // Supón que el backend devuelve JSON con información del usuario
+      console.log('Login exitoso:', data);
 
-      // Simulating storing a session token in localStorage
+      // Simulando almacenamiento de un token de sesión en localStorage
       localStorage.setItem('token', 'dummyToken');
 
-      // Store active user in localStorage
+      // Almacenar usuario activo en localStorage
       localStorage.setItem('activeUser', JSON.stringify(data));
 
-      // Redirect user based on authentication state
+      // Redirigir al usuario basado en el estado de autenticación
       if (localStorage.getItem('token')) {
-        // If authenticated, redirect to dashboard
+        // Si está autenticado, redirige al dashboard
         navigate('/dashboard');
-        window.location.reload();
       } else {
-        // If not authenticated, show error message or take other action
+        // Si no está autenticado, muestra un mensaje de error o realiza otra acción
         setError('Credenciales incorrectas. Por favor, verifica tu número de cuenta o DNI y contraseña.');
         setOpenError(true);
       }
@@ -91,9 +90,6 @@ const Login: React.FC = () => {
       setOpenError(true);
     }
   };
-
-
-
 
   const handleCloseError = () => {
     setOpenError(false);

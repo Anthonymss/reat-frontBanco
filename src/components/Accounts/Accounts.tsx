@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import { Container, Typography, Box, Card, CardContent, Grid, CircularProgress, Button, Modal, TextField, Snackbar } from '@mui/material';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
@@ -55,14 +54,17 @@ const Accounts: React.FC = () => {
         },
         body: JSON.stringify({
           numeroCuenta: newAccount.numeroCuenta,
-          saldo: parseFloat(newAccount.saldo), // Convertir saldo a número flotante si es necesario
-          clienteId: parseInt(newAccount.clienteId), // Convertir clienteId a entero si es necesario
-          bancoId: parseInt(newAccount.bancoId), // Convertir bancoId a entero si es necesario
+          saldo: parseFloat(newAccount.saldo),
+          clienteId: parseInt(newAccount.clienteId),
+          bancoId: parseInt(newAccount.bancoId),
           password: newAccount.password
         }),
       });
 
-    
+      if (!response.ok) {
+        throw new Error('Error creating account. Please try again.');
+      }
+
       const data = await response.json();
       console.log('Account created:', data);
       setOpenSuccess(true);
@@ -136,14 +138,13 @@ const Accounts: React.FC = () => {
             value={newAccount.saldo}
             onChange={handleChange}
           />
-          
           <TextField
             label="Cliente ID"
             fullWidth
             margin="normal"
             name="clienteId"
             type="number"
-            value= {account?.id}
+            value={newAccount.clienteId}
             onChange={handleChange}
           />
           <TextField

@@ -35,12 +35,12 @@ const Create: React.FC = () => {
   const navigate = useNavigate();
 
   const validateForm = () => {
-    if (nombre.length > 50) {
-      setError('El nombre no puede tener más de 50 caracteres.');
+    if (nombre.trim().length === 0 || nombre.length > 50) {
+      setError('El nombre no puede estar vacío y debe tener menos de 50 caracteres.');
       return false;
     }
-    if (apellido.length > 50) {
-      setError('El apellido no puede tener más de 50 caracteres.');
+    if (apellido.trim().length === 0 || apellido.length > 50) {
+      setError('El apellido no puede estar vacío y debe tener menos de 50 caracteres.');
       return false;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 50) {
@@ -51,11 +51,11 @@ const Create: React.FC = () => {
       setError('El DNI debe ser un número de 8 dígitos.');
       return false;
     }
-    if (telefono.length > 50) {
-      setError('El teléfono no puede tener más de 50 caracteres.');
+    if (telefono.trim().length === 0 || telefono.length > 50) {
+      setError('El teléfono no puede estar vacío y debe tener menos de 50 caracteres.');
       return false;
     }
-    if (password.length === 0) {
+    if (password.trim().length === 0) {
       setError('La contraseña no puede estar vacía.');
       return false;
     }

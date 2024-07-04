@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Typography, Box, Card, CardContent, Grid } from '@mui/material';
 
 const Dashboard: React.FC = () => {
-  // Obtener el usuario activo desde localStorage
+  // Obtener el usuario activo desde localStorage (no está implementado aquí, asegúrate de que lo obtengas)
 
   return (
     <Container>
