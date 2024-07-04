@@ -86,7 +86,7 @@ const Login: React.FC = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      setError('Credenciales incorrectas. Por favor, verifica tu número de cuenta o DNI y contraseña.');
+      setError('Credenciales incorrectas. Por favor, verifica tu número de cuenta o DNI y contraseña');
       setOpenError(true);
     }
   };
